@@ -1,0 +1,58 @@
+# 💡 Ignore secret files
+.env
+api.txt
+
+# 💡 Python cache
+__pycache__/
+*.py[cod]
+
+# 💡 Logs and system files
+*.log
+.DS_Store
+Thumbs.db
+
+# 💡 Node.js (if using)
+node_modules/
+
+# 💡 VSCode / JetBrains config (if applicable)
+.vscode/
+.idea/
+
+# 💡 Ignore virtual environments
+venv/
+env/
+
+# 💡 Ignore large media cache
+*.mp4
+*.mov
+*.avi
+*.zip
+# 💡 Ignore secret files
+.env
+api.txt
+
+# 💡 Python cache
+__pycache__/
+*.py[cod]
+
+# 💡 Logs and system files
+*.log
+.DS_Store
+Thumbs.db
+
+# 💡 Node.js (if using)
+node_modules/
+
+# 💡 VSCode / JetBrains config (if applicable)
+.vscode/
+.idea/
+
+# 💡 Ignore virtual environments
+venv/
+env/
+
+# 💡 Ignore large media cache
+*.mp4
+*.mov
+*.avi
+*.zip
