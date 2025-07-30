@@ -1,0 +1,281 @@
+html{
+   scroll-behavior: smooth; 
+}
+.nav-head{
+ font-family: 'Russo One', sans-serif;
+  font-size: 48px;
+  letter-spacing: 2px;
+  color: #0a0a0a;
+  
+}
+/* Hero Section Styles */
+.video-bg {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+}
+
+.video-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding-top: 30vh;
+  background: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+}
+
+.book-btn {
+  margin-top: 20px;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 1.2rem;
+}
+
+/* Flip Card Style */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 320px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: white;
+}
+
+.flip-card-front img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.flip-card-front h5 {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contact Section */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.whatsapp-btn, .contact-btn {
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  min-width: 160px;
+  text-align: center;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+}
+
+.contact-btn {
+  background-color: #007bff;
+}
+
+/* Navbar */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-nav {
+  gap: 20px;
+}
+
+/* Smooth Scrolling */
+body {
+  scroll-behavior: smooth;
+}
+.contact-card {
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.contact-card ul li i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+.main-heading{
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.btn{
+ font-weight: bold;
+}
+.btn:hover{
+    background-color: transparent;
+    border: px solid black;
+    color:black;
+}
+#contact i {
+  transition: transform 0.3s ease;
+}
+#contact i:hover {
+  transform: scale(1.3);
+}
+.nav-it{
+    color:black;
+}
+.nav-it:hover{
+    color:palevioletred;
+    scale:1.1;
+}
+ #home {
+    height: 100vh;
+  }
+
+  .animated-text {
+    transition: opacity 0.8s ease-in-out;
+    display: inline-block;
+    min-height: 1.5em; /* Prevent layout shift */
+  }
+
+  .fade-out {
+    opacity: 0;
+  }
+
+  .fade-in {
+    opacity: 1;
+  }
+
+  video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    #bookNowBtn {
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+    }
+    .about-img{
+      display: none;
+    }
+  }
+/* Dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* Optional: removes animation delay */
+}
+
+/* Optional: smooth fade-in */
+.dropdown-menu {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  display: block;
+  visibility: hidden;
+  position: absolute;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+}
+.btn-inner{
+  width:200px;
+}
+a{
+  text-decoration: none;
+}
+.logo-img{
+  height:20%;
+  width:60%;
+}
+    .hero-pages {
+      background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url('agriculture-page.jpg') center/cover no-repeat;
+      padding: 100px 20px;
+      margin-top:4%;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    }
+    .book-now-mobile {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1050;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .book-now-mobile {
+        display: block;
+      }
+}
+.drone-type {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #555;
+    }
+
+    .badge-feature {
+      font-size: 0.75rem;
+      margin-left: 8px;
+}
+    .highlight-card:hover {
+      transform: scale(1.03);
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .icon-box {
+      font-size: 2rem;
+      color: #0d6efd;
+    }

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroViaX – Drone Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+  <div class="container">
+    <!-- <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo2.png" alt="Logo" height="80" width="160" class="me-2">
+      <a href="index.html"> -->
+      <span class="fw-bold text-dark fs-3 nav-head">AeroViaX</span>
+      <a>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center fs-5 fw-bold ">
+        <li class="nav-item"><a class="nav-link nav-it" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-it" href="about.html">About Us</a></li>
+
+        <!-- Services Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-it" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="servicesDropdown">
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="agriculture.html">Agriculture</a></li>
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="photography.html">Aerial Photography</a></li>
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="mapping.html">Survey & Mapping</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link nav-it" href="#contact">Contact</a></li>
+
+        <!-- Book Now Button -->
+        <li class="nav-item" id="nav-book-btn" style="display: none;">
+          <a class="btn btn-warning btn-sm ms-3 rounded-pill btn" href="templates/book.html" id="bookBtnInNav">Book Now</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<section class="hero-pages text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Agricultural Drone Services</h1>
+    <p class="lead mt-3">Boosting productivity and sustainability through cutting-edge aerial technology</p>
+  </div>
+</section>
+
+<!-- ⭐ New: Introductory Section about Drones in Agriculture -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center fw-bold text-dark mb-4">Why Drones in Agriculture?</h2>
+    <p class="text-center mb-5 text-muted fs-5">
+      Drones are revolutionizing modern agriculture by offering real-time insights, precision, and efficiency. They help farmers save time, reduce costs, and increase yields with smart aerial solutions.
+    </p>
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/4149/4149623.png" alt="Monitoring Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">Real-Time Monitoring</h5>
+          <p class="text-muted">Track crop health and spot issues early with multispectral sensors and live imaging.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2529/2529521.png" alt="Precision Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">Precision Agriculture</h5>
+          <p class="text-muted">Apply fertilizers, pesticides, and water exactly where needed to reduce waste.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920051.png" alt="Efficiency Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">Time & Cost Saving</h5>
+          <p class="text-muted">Cover acres of land in minutes and cut down on manual labor significantly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <section class="py-5">
+  <div class="container">
+          <h2 class="text-center mb-5 fw-bold text-success">Drones services Provided By Us in Agriculture</h2>
+    <div class="row g-4 ">
+
+      <!-- Crop Monitoring -->
+      <div class="col-md-6 ">
+        <div class="flip-card ">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="monitering.jpg" alt="Crop Monitoring" class="img-fluid">
+              <h5 class="mt-1 main-heading">Crop Monitoring<span class="badge bg-success badge-feature">NDVI</span></h5>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-text">Analyze plant health and optimize crop performance using advanced imaging.</p>
+              <p class="drone-type">Drones: DJI Phantom 4 Multispectral, Parrot Bluegrass</p>
+              <a class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" href="#readMore1" role="button" aria-expanded="false" aria-controls="readMore1">Read More</a>
+              <div class="collapse collapse-content" id="readMore1">
+                NDVI and multispectral data help detect plant stress early, allowing farmers to take corrective action before major losses occur.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fertilization & Spraying -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="spraying.jpg" alt="Fertilization & Spraying" height="10px" class="img-fluid">
+              <h5 class="mt-2 main-heading">Fertilization & Spraying<span class="badge bg-warning text-dark badge-feature">Automated</span></h5>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-text">Efficiently distribute pesticides and nutrients with precision.</p>
+              <p class="drone-type">Drones: DJI Agras T30, XAG V40</p>
+              <a class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" href="#readMore2" role="button" aria-expanded="false" aria-controls="readMore2">Read More</a>
+              <div class="collapse collapse-content" id="readMore2">
+                Automated drones reduce chemical usage, protect human workers, and can cover hectares in minutes—ideal for large-scale farms.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seeding & Planting -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="seeding.jpg" alt="Seeding & Planting" class="img-fluid">
+              <h5 class="mt-2 main-heading">Seeding & Planting<span class="badge bg-info text-dark badge-feature">Eco</span></h5>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-text">Deploy seed pods over large or degraded land efficiently.</p>
+              <p class="drone-type">Drones: DroneSeed, BioCarbon UAVs</p>
+              <a class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" href="#readMore3" role="button" aria-expanded="false" aria-controls="readMore3">Read More</a>
+              <div class="collapse collapse-content" id="readMore3">
+                Seeding drones are used in reforestation and hard-to-reach areas, reducing time and labor costs dramatically.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Soil & Weather Analysis -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="whether.jpg" alt="Soil & Weather Analysis" class="img-fluid">
+              <h5 class="mt-2 main-heading">Soil & Weather Analysis<span class="badge bg-primary badge-feature">Sensors</span></h5>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-text">Collect valuable environmental data from above.</p>
+              <p class="drone-type">Drones: AgEagle RX60, DJI M200 Series + sensors</p>
+              <a class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" href="#readMore4" role="button" aria-expanded="false" aria-controls="readMore4">Read More</a>
+              <div class="collapse collapse-content" id="readMore4">
+                Monitor temperature, humidity, soil moisture, and elevation to help predict weather patterns and optimize crop calendars.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Book Now Button -->
+    <div class="text-center mt-5">
+      <a href="templates/book.html" class="btn btn-lg btn-outline-success rounded-pill px-4 py-2">
+        Book agriculture service 
+      </a>
+  </div>
+</section>
+
+<!-- Contact Us Section -->
+<section id="contact" class="py-5" style="background: linear-gradient(to right, #d8ecf3, #e6f2f8);">
+  <h2 class="mb-4 main-heading text-center">Contact Us</h2>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left Info -->
+       <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+        <h2 class="fw-bold mb-3">Get in Touch</h2>
+        <p><strong>📍 Location:</strong> AeroViaX HQ, Hyderabad, Telangana, India</p>
+        <p><strong>📧 Email:</strong> <a href="mailto:contact@aeroviax.com">contact@aeroviax.com</a></p>
+        <p><strong>📞 Phone:</strong> <a href="tel:+917032882407">+91 70328 82407</a></p>
+        <div class="mt-4">
+          <a href="https://wa.me/919346815121" target="_blank" class="me-3">
+            <i class="fab fa-whatsapp fa-lg text-success"></i>
+          </a>
+          <a href="#"><i class="fab fa-facebook fa-lg text-primary"></i></a>
+          <a href="#" class="ms-3"><i class="fab fa-instagram fa-lg text-danger"></i></a>
+          <a href="#" class="ms-3"><i class="fab fa-linkedin fa-lg text-info"></i></a>
+        </div>
+      </div>
+
+      <!-- Right WhatsApp CTA Button -->
+      <div class="col-md-6 text-center">
+        <a href="https://wa.me/919346815121" target="_blank"
+           class="btn btn-success rounded-pill px-5 py-3 fs-5 shadow-sm">
+          <i class="fab fa-whatsapp me-2"></i>Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="text-center small">
+      © 2025 AeroViaX. All rights reserved.
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

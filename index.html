@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroViaX – Drone Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+  <div class="container">
+    <!-- <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo2.png" alt="Logo" height="80" width="160" class="me-2">
+      <a href="index.html"> -->
+      <span class="fw-bold text-dark fs-3 nav-head">AeroViaX</span>
+      <a>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center fs-5 fw-bold ">
+        <li class="nav-item"><a class="nav-link nav-it" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-it" href="about.html">About Us</a></li>
+
+        <!-- Services Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-it" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="servicesDropdown">
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="agriculture.html">Agriculture</a></li>
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="photography.html">Aerial Photography</a></li>
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="mapping.html">Survey & Mapping</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link nav-it" href="#contact">Contact</a></li>
+
+        <!-- Book Now Button -->
+        <li class="nav-item" id="nav-book-btn" style="display: none;">
+          <a class="btn btn-warning btn-sm ms-3 rounded-pill btn" href="templates/book.html" id="bookBtnInNav">Book Now</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Hero Section -->
+<!-- Background Video Section -->
+<section id="home" class="position-relative overflow-hidden">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-n1">
+    <source src="Hero.mp4" type="video/mp4">
+  </video>
+  <!-- Dark overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100  opacity-50 z-0"></div>
+  <!-- Content -->
+  <div class="container-fluid h-100 d-flex justify-content-center align-items-center text-white text-center position-relative">
+    <div>
+      <h1 class="display-4 fw-bold mb-3 text-dark">
+        AeroViaX – <span id="dynamic-text" class="animated-text">Smart Skies. Smarter Solutions.</span>
+      </h1>
+      <a href="templates/book.html" id="bookNowBtn" class="btn btn-warning btn-lg mt-3 px-4 rounded-pill">Book Now</a>
+    </div>
+  </div>
+</section>
+<!-- Our Services -->
+<section class="py-5 bg-light" id="services" style="background: linear-gradient(to right, #d8ecf3, #e6f2f8);">
+  <div class="container text-center">
+    <h2 class="mb-4 main-heading">Our Services</h2>
+    <div class="row g-4">
+      <!-- Flip Card 1 -->
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="Agriculture.gif" alt="Agriculture" class="img-fluid">
+              <h5 class="mt-2 main-heading">Agriculture</h5>
+            </div>
+            <div class="flip-card-back">
+              <h5 class="main-heading">Agriculture Services</h5>
+              <p>Crop monitoring, drone spraying, and fertilization to improve yield and efficiency in agriculture operations.</p>
+              <a href="agriculture.html">
+                  <button type="button" data-bs-toggle="collapse" class="btn btn-inner btn-warning btn-lg mt-3 px-4 rounded-pill">More</button>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Flip Card 2 -->
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="photography.jpg" alt="Aerial" class="img-fluid">
+              <h5 class="mt-2 main-heading">Aerial Photography</h5>
+            </div>
+            <div class="flip-card-back">
+              <h5 class="main-heading">Aerial Photography</h5>
+              <p>Capture stunning visuals for real estate, weddings, events, and commercial projects using high-resolution drones.</p>
+              <a href="agriculture.html">
+                  <button type="button" data-bs-toggle="collapse" class="btn btn-inner btn-warning btn-lg mt-3 px-4 rounded-pill">More</button>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Flip Card 3 -->
+      <div class="col-md-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="mapping.jpg" alt="Survey" class="img-fluid">
+              <h5 class="mt-2 main-heading">Survey & Mapping</h5>
+            </div>
+            <div class="flip-card-back">
+              <h5 class="main-heading">Survey & Mapping</h5>
+              <p>Accurate mapping and topographical data collection for land surveys, construction, and mining projects.</p>
+              <a href="agriculture.html">
+                  <button type="button" data-bs-toggle="collapse" class="btn btn-inner btn-warning btn-lg mt-3 px-4 rounded-pill">More</button>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About Us Section -->
+  <section id="about" class="py-5 bg-white">
+    <div class="container">
+      <h2 class=" text-dark mb-md-5 text-center main-heading ">About Us</h2>
+      <div class="row align-items-center">
+        <!-- Left Image -->
+        <div class="col-lg-6 mb-4 mb-lg-0 object-fit-sm-cover about-img">
+          <img src="logo.jpg" alt="Drone Image" class="about-img " />
+        </div>
+        <!-- Right Content -->
+        <div class="col-lg-6">
+          <p class="text-muted">
+            At <strong>AeroViaX</strong>, we use advanced drones to deliver precision solutions across industries. Our mission is to revolutionize agriculture, real estate photography, and surveying through safe, cost-effective aerial technology.
+          </p>
+          <p class="text-muted">
+            Whether it’s boosting farm yield, capturing stunning cinematic visuals, or mapping land with centimeter-level accuracy — AeroViaX helps businesses gain insight from above.
+          </p>
+          <a href="about.html" class="btn btn-primary btn-rounded px-4 mt-3">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Contact Us Section -->
+<section id="contact" class="py-5" style="background: linear-gradient(to right, #d8ecf3, #e6f2f8);">
+  <h2 class="mb-4 main-heading text-center">Contact Us</h2>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left Info -->
+      <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+        <h2 class="fw-bold mb-3">Get in Touch</h2>
+        <p><strong>📍 Location:</strong> AeroViaX HQ, Hyderabad, Telangana, India</p>
+        <p><strong>📧 Email:</strong> <a href="mailto:contact@aeroviax.com">contact@aeroviax.com</a></p>
+        <p><strong>📞 Phone:</strong> <a href="tel:+917032882407">+91 70328 82407</a></p>
+        <div class="mt-4">
+          <a href="https://wa.me/919346815121" target="_blank" class="me-3">
+            <i class="fab fa-whatsapp fa-lg text-success"></i>
+          </a>
+          <a href="#"><i class="fab fa-facebook fa-lg text-primary"></i></a>
+          <a href="#" class="ms-3"><i class="fab fa-instagram fa-lg text-danger"></i></a>
+          <a href="#" class="ms-3"><i class="fab fa-linkedin fa-lg text-info"></i></a>
+        </div>
+      </div>
+      <!-- Right WhatsApp CTA Button -->
+      <div class="col-md-6 text-center">
+        <a id="whatsappDynamic" href="https://wa.me/916281805363"  target="_blank"
+           class="btn btn-success rounded-pill px-5 py-3 fs-5 shadow-sm">
+          <i class="fab fa-whatsapp me-2"></i>Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+    <hr class="my-5">
+    <div class="text-center small">
+      © 2025 AeroViaX. All rights reserved.
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

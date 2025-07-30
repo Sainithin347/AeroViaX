@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroViaX – Drone Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <style>
+     .hero-pages {
+      background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url('photo-banner.jpg') center/cover no-repeat;
+      padding: 100px 20px;
+      margin-top:4%;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+  <div class="container">
+    <!-- <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo2.png" alt="Logo" height="80" width="160" class="me-2">
+      <a href="index.html"> -->
+      <span class="fw-bold text-dark fs-3 nav-head">AeroViaX</span>
+      <a>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center fs-5 fw-bold ">
+        <li class="nav-item"><a class="nav-link nav-it" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-it" href="about.html">About Us</a></li>
+
+        <!-- Services Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-it" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="servicesDropdown">
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="agriculture.html">Agriculture</a></li>
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="photography.html">Aerial Photography</a></li>
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="mapping.html">Survey & Mapping</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link nav-it" href="#contact">Contact</a></li>
+
+        <!-- Book Now Button -->
+        <li class="nav-item" id="nav-book-btn" style="display: none;">
+          <a class="btn btn-warning btn-sm ms-3 rounded-pill btn" href="templates/book.html" id="bookBtnInNav">Book Now</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<section class="hero-pages text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Aerial Photography Services</h1>
+    <p class="lead mt-3">Capturing breathtaking perspectives for events, real estate, and creative projects</p>
+  </div>
+</section>
+
+<section class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center fw-bold text-dark mb-4">Why Aerial Photography?</h2>
+    <p class="text-center mb-5 text-muted fs-5">
+      Aerial drone photography elevates storytelling by offering stunning visuals from unique vantage points. Ideal for marketing, documentation, and cinematic production.
+    </p>
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2950/2950694.png" alt="Perspective Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">Unique Perspectives</h5>
+          <p class="text-muted">Capture angles that traditional cameras simply can't reach.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3275/3275791.png" alt="Marketing Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">Marketing Power</h5>
+          <p class="text-muted">Attract attention with dynamic drone footage for real estate, events, and more.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1375/1375106.png" alt="Efficiency Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">High Efficiency</h5>
+          <p class="text-muted">Quickly document large areas with high-definition photos and videos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold text-success">Aerial Photography Services We Provide</h2>
+    <div class="row g-4">
+
+      <!-- Real Estate Photography -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="realestate.jpg" alt="Real Estate Photography" class="img-fluid">
+              <h5 class="mt-2 main-heading">Real Estate Shoots<span class="badge bg-info text-dark badge-feature">4K</span></h5>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-text">Capture stunning overhead views of properties for listings, marketing, and walkthroughs.</p>
+              <p class="drone-type">Drones: DJI Mavic 3, Autel EVO II Pro</p>
+              <a class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" href="#readMore1" role="button" aria-expanded="false" aria-controls="readMore1">Read More</a>
+              <div class="collapse collapse-content" id="readMore1">
+                Help clients get a full visual experience of properties with cinematic drone shots that increase sales conversion.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Coverage -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="event.jpg" alt="Event Drone Coverage" class="img-fluid">
+              <h5 class="mt-2 main-heading">Event Coverage<span class="badge bg-warning text-dark badge-feature">Live</span></h5>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-text">Cover weddings, festivals, and ceremonies from breathtaking aerial perspectives.</p>
+              <p class="drone-type">Drones: DJI Air 3, Skydio 2+</p>
+              <a class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" href="#readMore2" role="button" aria-expanded="false" aria-controls="readMore2">Read More</a>
+              <div class="collapse collapse-content" id="readMore2">
+                Create dynamic, sweeping videos for social media or personal archives with minimal disruption to events.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tourism & Promotion -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="tourism.jpg" alt="Tourism and Promo" class="img-fluid">
+              <h5 class="mt-2 main-heading">Tourism & Promo Shoots<span class="badge bg-success badge-feature">Scenic</span></h5>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-text">Highlight destinations or promote resorts, adventure sports, and attractions with cinematic flair.</p>
+              <p class="drone-type">Drones: DJI Mini 4 Pro, Parrot Anafi</p>
+              <a class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" href="#readMore3" role="button" aria-expanded="false" aria-controls="readMore3">Read More</a>
+              <div class="collapse collapse-content" id="readMore3">
+                Attract more tourists or customers by showcasing wide-angle scenic views and engaging travel storytelling.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infrastructure Inspection -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="infrastructure.jpg" alt="Infrastructure Inspection" class="img-fluid">
+              <h5 class="mt-2 main-heading">Infrastructure Shoots<span class="badge bg-danger badge-feature">Industrial</span></h5>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-text">Inspect high-rise buildings, bridges, towers, or industrial zones safely and efficiently.</p>
+              <p class="drone-type">Drones: DJI Matrice 300 RTK, Elios 3</p>
+              <a class="btn btn-sm btn-outline-success mt-2" data-bs-toggle="collapse" href="#readMore4" role="button" aria-expanded="false" aria-controls="readMore4">Read More</a>
+              <div class="collapse collapse-content" id="readMore4">
+                Get high-definition close-ups of inaccessible structures without scaffolding or shutting down operations.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Book Now Button -->
+    <div class="text-center mt-5">
+      <a href="templates/book.html" class="btn btn-lg btn-outline-success rounded-pill px-4 py-2">
+        Book a Drone photography Now
+      </a>
+  </div>
+</section>
+<!-- Contact Us Section -->
+<section id="contact" class="py-5" style="background: linear-gradient(to right, #d8ecf3, #e6f2f8);">
+  <h2 class="mb-4 main-heading text-center">Contact Us</h2>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left Info -->
+ <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+        <h2 class="fw-bold mb-3">Get in Touch</h2>
+        <p><strong>📍 Location:</strong> AeroViaX HQ, Hyderabad, Telangana, India</p>
+        <p><strong>📧 Email:</strong> <a href="mailto:contact@aeroviax.com">contact@aeroviax.com</a></p>
+        <p><strong>📞 Phone:</strong> <a href="tel:+917032882407">+91 70328 82407</a></p>
+        <div class="mt-4">
+          <a href="https://wa.me/919346815121" target="_blank" class="me-3">
+            <i class="fab fa-whatsapp fa-lg text-success"></i>
+          </a>
+          <a href="#"><i class="fab fa-facebook fa-lg text-primary"></i></a>
+          <a href="#" class="ms-3"><i class="fab fa-instagram fa-lg text-danger"></i></a>
+          <a href="#" class="ms-3"><i class="fab fa-linkedin fa-lg text-info"></i></a>
+        </div>
+      </div>
+
+      <!-- Right WhatsApp CTA Button -->
+      <div class="col-md-6 text-center">
+        <a href="https://wa.me/919346815121" target="_blank"
+           class="btn btn-success rounded-pill px-5 py-3 fs-5 shadow-sm">
+          <i class="fab fa-whatsapp me-2"></i>Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="text-center small">
+      © 2025 AeroViaX. All rights reserved.
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

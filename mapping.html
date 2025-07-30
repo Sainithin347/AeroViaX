@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroViaX – Drone Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <style>
+     .hero-pages {
+      background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url('survey-banner.jpg') center/cover no-repeat;
+      padding: 100px 20px;
+      margin-top:4%;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+  <div class="container">
+    <!-- <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo2.png" alt="Logo" height="80" width="160" class="me-2">
+      <a href="index.html"> -->
+      <span class="fw-bold text-dark fs-3 nav-head">AeroViaX</span>
+      <a>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center fs-5 fw-bold ">
+        <li class="nav-item"><a class="nav-link nav-it" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-it" href="about.html">About Us</a></li>
+
+        <!-- Services Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-it" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="servicesDropdown">
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="agriculture.html">Agriculture</a></li>
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="photography.html">Aerial Photography</a></li>
+            <li><a class="dropdown-item fw-bold fs-6 p-2 mt-lg-auto" href="mapping.html">Survey & Mapping</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link nav-it" href="#contact">Contact</a></li>
+
+        <!-- Book Now Button -->
+        <li class="nav-item" id="nav-book-btn" style="display: none;">
+          <a class="btn btn-warning btn-sm ms-3 rounded-pill btn" href="templates/book.html" id="bookBtnInNav">Book Now</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<section class="hero-pages text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Survey & Mapping Services</h1>
+    <p class="lead mt-3">Precision mapping and spatial data solutions for land development, infrastructure, and resource planning</p>
+  </div>
+</section>
+
+<section class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center fw-bold text-dark mb-4">Why Choose Drone Survey & Mapping?</h2>
+    <p class="text-center mb-5 text-muted fs-5">
+      Drone-based surveys deliver fast, accurate, and high-resolution data for construction, mining, utilities, and environmental applications—reducing manual labor and improving planning decisions.
+    </p>
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/11493/11493752.png" alt="Accuracy Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">High Accuracy</h5>
+          <p class="text-muted">Generate centimeter-level accurate maps using RTK and GPS-enabled drones.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/7580/7580410.png" alt="Coverage Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">Large Area Coverage</h5>
+          <p class="text-muted">Efficiently survey vast landscapes—ideal for construction, agriculture, and land planning.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100 highlight-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3467/3467585.png" alt="3D Mapping Icon" style="width: 60px;">
+          <h5 class="mt-3 fw-semibold">3D Terrain Mapping</h5>
+          <p class="text-muted">Create digital elevation models and 3D surface maps to enhance site analysis and engineering workflows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold text-success">Survey & Mapping Services</h2>
+    <div class="row g-4">
+
+      <!-- Land Surveying -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="lan.jpg" alt="Land Surveying" class="img-fluid rounded">
+              <h5 class="mt-2 text-dark">Land Surveying</h5>
+            </div>
+            <div class="flip-card-back">
+              <h5 class="fw-bold">Land Surveying</h5>
+              <p>Accurate drone-based land boundary and topographical surveys for construction, legal, and civil engineering use.</p>
+              <p class="text-muted small">Drones: DJI Phantom 4 RTK, WingtraOne</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Utility Mapping -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="utility.jpg" alt="Utility Mapping" class="img-fluid rounded">
+              <h5 class="mt-2 text-dark">Utility Infrastructure Mapping</h5>
+            </div>
+            <div class="flip-card-back">
+              <h5 class="fw-bold">Utility Infrastructure Mapping</h5>
+              <p>Precise mapping of underground pipelines, cables, and overhead utilities using geo-referenced drone imagery.</p>
+              <p class="text-muted small">Drones: DJI Matrice 300 RTK + GPR Sensors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Urban Planning -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="urban.jpg" alt="Urban Mapping" class="img-fluid rounded">
+              <h5 class="mt-2 text-dark">Urban Planning & Layout Design</h5>
+            </div>
+            <div class="flip-card-back">
+              <h5 class="fw-bold">Urban Planning</h5>
+              <p>Create detailed 3D city models and zoning maps to aid municipalities and architects in urban development.</p>
+              <p class="text-muted small">Drones: Delair UX11, DJI Mavic 3 Enterprise</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mining and Volume Estimation -->
+      <div class="col-md-6">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="mining.jpg" alt="Mining Survey" class="img-fluid rounded">
+              <h5 class="mt-2 text-dark">Mining & Volume Estimation</h5>
+            </div>
+            <div class="flip-card-back">
+              <h5 class="fw-bold">Mining Surveys</h5>
+              <p>Drone-enabled stockpile measurement, cut-and-fill analysis, and safety assessments for mining operations.</p>
+              <p class="text-muted small">Drones: SenseFly eBee X, Phantom 4 RTK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Book Button -->
+    <div class="text-center mt-5">
+      <a href="templates/book.html" class="btn btn-lg btn-outline-success rounded-pill px-4 py-2">
+        Book a Drone Survey Now
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact Us Section -->
+<section id="contact" class="py-5" style="background: linear-gradient(to right, #d8ecf3, #e6f2f8);">
+  <h2 class="mb-4 main-heading text-center">Contact Us</h2>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left Info -->
+ <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+        <h2 class="fw-bold mb-3">Get in Touch</h2>
+        <p><strong>📍 Location:</strong> AeroViaX HQ, Hyderabad, Telangana, India</p>
+        <p><strong>📧 Email:</strong> <a href="mailto:contact@aeroviax.com">contact@aeroviax.com</a></p>
+        <p><strong>📞 Phone:</strong> <a href="tel:+917032882407">+91 70328 82407</a></p>
+        <div class="mt-4">
+          <a href="https://wa.me/919346815121" target="_blank" class="me-3">
+            <i class="fab fa-whatsapp fa-lg text-success"></i>
+          </a>
+          <a href="#"><i class="fab fa-facebook fa-lg text-primary"></i></a>
+          <a href="#" class="ms-3"><i class="fab fa-instagram fa-lg text-danger"></i></a>
+          <a href="#" class="ms-3"><i class="fab fa-linkedin fa-lg text-info"></i></a>
+        </div>
+      </div>
+      <!-- Right WhatsApp CTA Button -->
+      <div class="col-md-6 text-center">
+        <a href="https://wa.me/919346815121" target="_blank"
+           class="btn btn-success rounded-pill px-5 py-3 fs-5 shadow-sm">
+          <i class="fab fa-whatsapp me-2"></i>Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="text-center small">
+      © 2025 AeroViaX. All rights reserved.
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
