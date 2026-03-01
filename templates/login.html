@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+
+<div class="auth-container">
+    <h2 class="auth-title">Admin Login</h2>
+    <p class="auth-subtitle">Sign in to manage distributors, bookings, and revenue.</p>
+    <form method="POST" class="auth-form">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" class="auth-btn">Login</button>
+    </form>
+    <p class="auth-switch">Don't have account?</p>
+    <a href="/register" class="auth-link-btn">Register</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success | AeroViaX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20260225') }}">
+</head>
+<body class="result-page">
+    <section class="result-card">
+        <div class="result-header">
+            <h1 class="result-title">Payment Successful</h1>
+            <span class="status-badge status-success">SUCCESS</span>
+        </div>
+
+        <div class="result-highlight success-highlight">
+            <div class="highlight-label">Transaction Amount</div>
+            <div class="highlight-value">Rs {{ details.amount }}</div>
+            <div class="highlight-note">Reference: {{ details.payment_id }}</div>
+        </div>
+
+        <p class="result-note">
+            Your booking payment has been processed successfully. Keep this receipt for your records.
+        </p>
+
+        {% if details.used_fallback %}
+        <p class="result-note subtle-note">
+            Showing latest successful booking details available on server.
+        </p>
+        {% endif %}
+
+        <div class="result-grid">
+            <div class="result-item">
+                <div class="result-label">Order ID</div>
+                <div class="result-value">{{ details.order_id }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">UTR / Payment Ref</div>
+                <div class="result-value">{{ details.payment_id }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Amount</div>
+                <div class="result-value">Rs {{ details.amount }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Service</div>
+                <div class="result-value">{{ details.service }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Provider</div>
+                <div class="result-value">{{ details.provider }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Customer Phone</div>
+                <div class="result-value">{{ details.phone }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Gateway Signature</div>
+                <div class="result-value">{{ details.signature }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Processed At</div>
+                <div class="result-value">{{ details.timestamp }}</div>
+            </div>
+        </div>
+
+        <div class="result-actions">
+            <a class="result-btn btn-primary" href="/">Back to Home</a>
+            <a class="result-btn btn-secondary" href="/about">Contact Support</a>
+        </div>
+
+        <div class="review-box">
+            <h3>Feedback after service completion</h3>
+            <p class="result-note">
+                Your distributor will now schedule and complete the service. Once they mark it as successful/completed,
+                you will receive a feedback link by email to submit your rating.
+            </p>
+        </div>
+    </section>
+</body>
+</html>

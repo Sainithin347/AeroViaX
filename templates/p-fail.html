@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed | AeroViaX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20260225') }}">
+</head>
+<body class="result-page">
+    <section class="result-card">
+        <div class="result-header">
+            <h1 class="result-title">Payment Failed</h1>
+            <span class="status-badge status-failed">FAILED</span>
+        </div>
+
+        <p class="result-note">
+            We could not complete this transaction. Please verify the details and try again.
+        </p>
+
+        <div class="result-grid">
+            <div class="result-item">
+                <div class="result-label">Order ID</div>
+                <div class="result-value">{{ details.order_id }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Amount</div>
+                <div class="result-value">Rs {{ details.amount }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Service</div>
+                <div class="result-value">{{ details.service }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Provider</div>
+                <div class="result-value">{{ details.provider }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Reason</div>
+                <div class="result-value">{{ details.reason }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Attempt Time</div>
+                <div class="result-value">{{ details.timestamp }}</div>
+            </div>
+        </div>
+
+        <div class="result-actions">
+            <a class="result-btn btn-primary" href="/">Try Again</a>
+            <a class="result-btn btn-secondary" href="/about">Contact Support</a>
+        </div>
+    </section>
+</body>
+</html>

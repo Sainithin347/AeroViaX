@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Your Service | AeroViaX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20260225') }}">
+</head>
+<body class="result-page">
+    <section class="result-card">
+        <div class="result-header">
+            <h1 class="result-title">Service Feedback</h1>
+            <span class="status-badge status-success">{{ details.status }}</span>
+        </div>
+
+        <p class="result-note">
+            Hi {{ details.customer_name }}, please rate your completed service.
+        </p>
+
+        <div class="result-grid">
+            <div class="result-item">
+                <div class="result-label">Order ID</div>
+                <div class="result-value">{{ details.order_id }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Provider</div>
+                <div class="result-value">{{ details.provider }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Service</div>
+                <div class="result-value">{{ details.service }}</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Status</div>
+                <div class="result-value">{{ details.status }}</div>
+            </div>
+        </div>
+
+        <div class="review-box">
+            <h3>Share your rating</h3>
+            <div class="review-controls">
+                <select id="reviewRating">
+                    <option value="">Select Rating</option>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="3">3 - Good</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="1">1 - Poor</option>
+                </select>
+                <textarea id="reviewText" rows="3" placeholder="Write your feedback (optional)"></textarea>
+                <button id="submitReviewBtn" class="result-btn btn-primary" type="button">Submit Feedback</button>
+                <p id="reviewStatus" class="result-note subtle-note"></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    (function () {
+        const btn = document.getElementById("submitReviewBtn");
+        const rating = document.getElementById("reviewRating");
+        const text = document.getElementById("reviewText");
+        const status = document.getElementById("reviewStatus");
+
+        if (!btn) return;
+
+        btn.addEventListener("click", function () {
+            const ratingValue = rating.value;
+            if (!ratingValue) {
+                status.textContent = "Please select a rating.";
+                return;
+            }
+
+            fetch("/submit-review", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    order_id: "{{ details.order_id }}",
+                    distributor_id: "{{ details.distributor_id }}",
+                    customer_name: "{{ details.customer_name }}",
+                    rating: ratingValue,
+                    review_text: text.value.trim()
+                })
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.status === "success") {
+                    status.textContent = "Thank you. Your feedback has been submitted.";
+                    btn.disabled = true;
+                } else {
+                    status.textContent = data.message || "Failed to submit feedback.";
+                }
+            })
+            .catch(() => {
+                status.textContent = "Network error while submitting feedback.";
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

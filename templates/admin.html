@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | AeroViaX</title>
+<style>
+body { margin:0; font-family: Arial, sans-serif; background:#0b1223; color:#e2e8f0; }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 24px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom: 18px; }
+.topbar h1 { margin:0; font-size: 26px; }
+.logout { color:#bfdbfe; text-decoration:none; border:1px solid #334155; border-radius:10px; padding:8px 12px; }
+.metric { background:linear-gradient(120deg,#1d4ed8,#0891b2); border-radius:14px; padding:16px; margin-bottom:18px; }
+.metric h2 { margin:0; font-size:22px; }
+.card { background:#121b30; border:1px solid #24324f; border-radius:14px; padding:16px; margin-bottom:18px; }
+.card h2 { margin:0 0 12px 0; font-size:20px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px; border-bottom:1px solid #24324f; text-align:left; vertical-align:top; }
+th { background:#1e3a8a; position:sticky; top:0; }
+.table-wrap { overflow:auto; max-height:430px; border:1px solid #24324f; border-radius:10px; }
+input, select { width:100%; padding:8px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#e2e8f0; }
+.inline-form { display:flex; gap:8px; flex-wrap:wrap; }
+.inline-form > * { min-width:130px; flex:1 1 130px; }
+button { border:none; border-radius:8px; padding:7px 11px; color:#fff; cursor:pointer; font-weight:600; }
+.add { background:#16a34a; }
+.delete { background:#dc2626; }
+.update { background:#2563eb; }
+.muted { color:#94a3b8; font-size:12px; }
+.status-chip { display:inline-block; border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; border:1px solid; }
+.s-created { color:#bfdbfe; border-color:#3b82f6; background:#1e3a8a33; }
+.s-assigned { color:#fcd34d; border-color:#f59e0b; background:#78350f44; }
+.s-progress { color:#facc15; border-color:#facc15; background:#713f1244; }
+.s-success { color:#86efac; border-color:#22c55e; background:#14532d55; }
+.s-completed { color:#5eead4; border-color:#14b8a6; background:#134e4a66; }
+.s-reviewed { color:#c4b5fd; border-color:#8b5cf6; background:#4c1d9566; }
+.s-closed { color:#cbd5e1; border-color:#64748b; background:#0f172a99; }
+.s-failed { color:#fecaca; border-color:#ef4444; background:#7f1d1d66; }
+.grid-two { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+@media (max-width: 980px) { .grid-two { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <div class="topbar">
+        <h1>Admin Operations Dashboard</h1>
+        <a class="logout" href="/admin/logout">Logout</a>
+    </div>
+
+    <div class="metric">
+        <h2>Total Revenue: Rs {{ revenue }}</h2>
+        <div class="muted">Revenue is based on all paid bookings (all statuses except <strong>FAILED</strong>).</div>
+    </div>
+
+    <div class="card">
+        <h2>Add Distributor</h2>
+        <form method="POST" action="/admin/add-distributor" class="inline-form">
+            <input name="company" placeholder="Company" required>
+            <input name="distributor" placeholder="Distributor Name" required>
+            <input name="service" placeholder="Service" required>
+            <input name="location" placeholder="Location" required>
+            <input name="price" placeholder="Price" required>
+            <input name="rating" placeholder="Rating" required>
+            <button class="add" type="submit">Add</button>
+        </form>
+    </div>
+
+    <div class="grid-two">
+        <div class="card">
+            <h2>Distributors</h2>
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Company</th>
+                        <th>Distributor</th>
+                        <th>Service</th>
+                        <th>Location</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for d in distributors %}
+                    <tr>
+                        <td>{{ d[0] }}</td>
+                        <td>{{ d[1] }}</td>
+                        <td>{{ d[2] }}</td>
+                        <td>{{ d[3] }}</td>
+                        <td>{{ d[4] }}</td>
+                        <td>Rs {{ d[5] }}</td>
+                        <td>{{ d[6] }}</td>
+                        <td>
+                            <form method="POST" action="/admin/delete-distributor/{{ d[0] }}">
+                                <button class="delete" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Amount Change Requests</h2>
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Company</th>
+                        <th>Holder</th>
+                        <th>Service</th>
+                        <th>Current</th>
+                        <th>Requested</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for r in amount_change_requests %}
+                    <tr>
+                        <td>{{ r[0] }}</td>
+                        <td>{{ r[1] }}</td>
+                        <td>{{ r[2] }}</td>
+                        <td>{{ r[3] }}</td>
+                        <td>Rs {{ r[4] }}</td>
+                        <td>Rs {{ r[5] }}</td>
+                        <td>{{ r[6] }}</td>
+                        <td>
+                            {% if r[6] == 'PENDING' %}
+                            <form method="POST" action="/admin/review-amount-request/{{ r[0] }}" style="display:inline-block;">
+                                <input type="hidden" name="action" value="approve">
+                                <button class="add" type="submit">Approve</button>
+                            </form>
+                            <form method="POST" action="/admin/review-amount-request/{{ r[0] }}" style="display:inline-block;">
+                                <input type="hidden" name="action" value="reject">
+                                <button class="delete" type="submit">Reject</button>
+                            </form>
+                            {% else %}
+                            Reviewed
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Partner Requests</h2>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Holder Name</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Location</th>
+                    <th>Service</th>
+                    <th>Rating</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                {% for p in partner_requests %}
+                <tr>
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[4] }}</td>
+                    <td>{{ p[5] }}</td>
+                    <td>{{ p[6] }}</td>
+                    <td>{{ p[7] }}</td>
+                    <td>{{ p[8] }}</td>
+                    <td>
+                        {% if p[8] != 'APPROVED' %}
+                        <form method="POST" action="/admin/approve-partner/{{ p[0] }}">
+                            <button class="add" type="submit">Approve</button>
+                        </form>
+                        {% else %}
+                        Approved
+                        {% endif %}
+                        <form method="POST" action="/admin/delete-partner/{{ p[0] }}" style="margin-top:6px;">
+                            <button class="delete" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Bookings (Live Distributor Sync)</h2>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Company</th>
+                    <th>Service</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Order ID</th>
+                    <th>Schedule</th>
+                    <th>Feedback Request</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                </tr>
+                {% for b in bookings %}
+                <tr>
+                    <td>{{ b[0] }}</td>
+                    <td>{{ b[1] }}</td>
+                    <td>{{ b[2] }}</td>
+                    <td>
+                        {{ b[3] }}<br>
+                        <span class="muted">{{ b[4] }}</span><br>
+                        <span class="muted">{{ b[5] }}</span>
+                    </td>
+                    <td>Rs {{ b[6] }}</td>
+                    <td>{{ b[7] }}</td>
+                    <td>
+                        {% if b[9] %}{{ b[9] }}{% else %}-{% endif %}
+                        {% if b[10] %}<br><span class="muted">{{ b[10] }}</span>{% endif %}
+                    </td>
+                    <td>{% if b[11] %}{{ b[11] }}{% else %}-{% endif %}</td>
+                    <td>
+                        {% if b[8] == "CREATED" %}
+                        <span class="status-chip s-created">CREATED</span>
+                        {% elif b[8] == "ASSIGNED" %}
+                        <span class="status-chip s-assigned">ASSIGNED</span>
+                        {% elif b[8] == "IN_PROGRESS" %}
+                        <span class="status-chip s-progress">IN_PROGRESS</span>
+                        {% elif b[8] == "SUCCESS" %}
+                        <span class="status-chip s-success">SUCCESS</span>
+                        {% elif b[8] == "COMPLETED" %}
+                        <span class="status-chip s-completed">COMPLETED</span>
+                        {% elif b[8] == "REVIEWED" %}
+                        <span class="status-chip s-reviewed">REVIEWED</span>
+                        {% elif b[8] == "CLOSED" %}
+                        <span class="status-chip s-closed">CLOSED</span>
+                        {% else %}
+                        <span class="status-chip s-failed">{{ b[8] }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form method="POST" action="/admin/update-booking/{{ b[0] }}">
+                            <select name="status">
+                                <option value="CREATED" {% if b[8] == 'CREATED' %}selected{% endif %}>CREATED</option>
+                                <option value="ASSIGNED" {% if b[8] == 'ASSIGNED' %}selected{% endif %}>ASSIGNED</option>
+                                <option value="IN_PROGRESS" {% if b[8] == 'IN_PROGRESS' %}selected{% endif %}>IN_PROGRESS</option>
+                                <option value="SUCCESS" {% if b[8] == 'SUCCESS' %}selected{% endif %}>SUCCESS</option>
+                                <option value="COMPLETED" {% if b[8] == 'COMPLETED' %}selected{% endif %}>COMPLETED</option>
+                                <option value="REVIEWED" {% if b[8] == 'REVIEWED' %}selected{% endif %}>REVIEWED</option>
+                                <option value="CLOSED" {% if b[8] == 'CLOSED' %}selected{% endif %}>CLOSED</option>
+                                <option value="FAILED" {% if b[8] == 'FAILED' %}selected{% endif %}>FAILED</option>
+                            </select>
+                            <button class="update" type="submit" style="margin-top:8px;">Update</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Notification Logs</h2>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Order ID</th>
+                    <th>Event</th>
+                    <th>Channel</th>
+                    <th>Recipient</th>
+                    <th>Status</th>
+                    <th>Sent At</th>
+                    <th>Created At</th>
+                    <th>Error</th>
+                </tr>
+                {% for n in notifications %}
+                <tr>
+                    <td>{{ n[0] }}</td>
+                    <td>{{ n[1] }}</td>
+                    <td>{{ n[2] }}</td>
+                    <td>{{ n[3] }}</td>
+                    <td>{{ n[4] }}</td>
+                    <td>{{ n[5] }}</td>
+                    <td>{{ n[6] if n[6] else '-' }}</td>
+                    <td>{{ n[7] }}</td>
+                    <td>{{ n[8] if n[8] else '-' }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

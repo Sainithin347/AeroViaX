@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributor Dashboard | AeroViaX</title>
+    <style>
+        body { margin:0; font-family: Arial, sans-serif; background:#071225; color:#e2e8f0; }
+        .wrap { max-width: 1320px; margin: 0 auto; padding: 22px; }
+        .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+        .topbar h1 { margin:0; font-size:26px; }
+        .logout { color:#bfdbfe; text-decoration:none; border:1px solid #334155; border-radius:10px; padding:8px 12px; }
+        .card { background:#101c33; border:1px solid #22314e; border-radius:14px; padding:16px; margin-bottom:16px; }
+        .card h2 { margin:0 0 10px 0; font-size:20px; }
+        .company-line { color:#93c5fd; margin-top:6px; font-size:14px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:16px; }
+        .stat { background:linear-gradient(130deg,#1d4ed8,#0891b2); border-radius:12px; padding:14px; }
+        .stat .label { font-size:12px; opacity:0.92; }
+        .stat .value { font-size:24px; font-weight:700; margin-top:4px; }
+        .muted { color:#94a3b8; font-size:12px; }
+        table { width:100%; border-collapse:collapse; font-size:13px; }
+        th, td { padding:10px; border-bottom:1px solid #24324f; text-align:left; vertical-align:top; }
+        th { background:#1e3a8a; }
+        .table-wrap { overflow:auto; max-height: 520px; border:1px solid #24324f; border-radius:10px; }
+        input, select { width:100%; padding:8px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#e2e8f0; }
+        .btn { background:#06b6d4; color:#fff; border:none; border-radius:8px; padding:8px 12px; cursor:pointer; font-weight:600; }
+        .btn-green { background:#16a34a; }
+        .status-chip { display:inline-block; border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; border:1px solid; }
+        .s-created { color:#bfdbfe; border-color:#3b82f6; background:#1e3a8a33; }
+        .s-assigned { color:#fcd34d; border-color:#f59e0b; background:#78350f44; }
+        .s-progress { color:#facc15; border-color:#facc15; background:#713f1244; }
+        .s-success { color:#86efac; border-color:#22c55e; background:#14532d55; }
+        .s-completed { color:#5eead4; border-color:#14b8a6; background:#134e4a66; }
+        .s-reviewed { color:#c4b5fd; border-color:#8b5cf6; background:#4c1d9566; }
+        .s-closed { color:#cbd5e1; border-color:#64748b; background:#0f172a99; }
+        .s-failed { color:#fecaca; border-color:#ef4444; background:#7f1d1d66; }
+        .stack { display:flex; flex-direction:column; gap:8px; }
+        @media (max-width: 1024px) { .grid-4 { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+        @media (max-width: 640px) { .grid-4 { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="topbar">
+            <h1>Distributor Operations</h1>
+            <a class="logout" href="/partner/logout">Logout</a>
+        </div>
+
+        {% if partner %}
+        <div class="card">
+            <h2>{{ partner[2] }}</h2>
+            <div class="company-line">Holder: {{ partner[1] }} | Service: {{ partner[6] }} | Location: {{ partner[5] }}</div>
+            <div class="company-line">Email: {{ partner[3] }} | Phone: {{ partner[4] }} | Rating: {{ partner[7] }} | Account: {{ partner[8] }}</div>
+        </div>
+        {% endif %}
+
+        <div class="grid-4">
+            <div class="stat">
+                <div class="label">Total Orders</div>
+                <div class="value">{{ metrics.total_orders }}</div>
+            </div>
+            <div class="stat">
+                <div class="label">Active Orders</div>
+                <div class="value">{{ metrics.pending_orders }}</div>
+            </div>
+            <div class="stat">
+                <div class="label">Completed Orders</div>
+                <div class="value">{{ metrics.completed_orders }}</div>
+            </div>
+            <div class="stat">
+                <div class="label">Orders Today</div>
+                <div class="value">{{ metrics.today_orders }}</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Service Amount Management</h2>
+            {% if distributor %}
+            <div class="stack" style="max-width:420px;">
+                <div>Current listed amount: <strong>Rs {{ distributor[5] }}</strong></div>
+                <form method="POST" action="/partner/request-amount-change">
+                    <input type="number" step="0.01" min="1" name="requested_price" placeholder="Request new amount" required>
+                    <button class="btn" type="submit" style="margin-top:8px;">Request Admin Approval</button>
+                </form>
+            </div>
+            {% else %}
+            <p>No linked distributor profile found yet. Ask admin to approve your partner profile.</p>
+            {% endif %}
+        </div>
+
+        <div class="card">
+            <h2>Amount Change Request History</h2>
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Current Amount</th>
+                        <th>Requested Amount</th>
+                        <th>Status</th>
+                        <th>Requested At</th>
+                        <th>Reviewed At</th>
+                    </tr>
+                    {% for r in amount_requests %}
+                    <tr>
+                        <td>{{ r[0] }}</td>
+                        <td>Rs {{ r[1] }}</td>
+                        <td>Rs {{ r[2] }}</td>
+                        <td>{{ r[3] }}</td>
+                        <td>{{ r[4] }}</td>
+                        <td>{{ r[5] if r[5] else '-' }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Customer Orders</h2>
+            <p class="muted">When you update status to SUCCESS or COMPLETED, customer feedback request is sent and reflected in admin dashboard.</p>
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer Details</th>
+                        <th>Service</th>
+                        <th>Location</th>
+                        <th>Amount</th>
+                        <th>Order ID</th>
+                        <th>Status</th>
+                        <th>Schedule & Update</th>
+                    </tr>
+                    {% for b in bookings %}
+                    <tr>
+                        <td>{{ b[0] }}</td>
+                        <td>
+                            {{ b[1] }}<br>
+                            <span class="muted">{{ b[2] }}</span><br>
+                            <span class="muted">{{ b[3] }}</span>
+                        </td>
+                        <td>{{ b[4] }}</td>
+                        <td>{{ b[5] }}</td>
+                        <td>Rs {{ b[6] }}</td>
+                        <td>{{ b[7] }}</td>
+                        <td>
+                            {% if b[8] == "CREATED" %}
+                            <span class="status-chip s-created">CREATED</span>
+                            {% elif b[8] == "ASSIGNED" %}
+                            <span class="status-chip s-assigned">ASSIGNED</span>
+                            {% elif b[8] == "IN_PROGRESS" %}
+                            <span class="status-chip s-progress">IN_PROGRESS</span>
+                            {% elif b[8] == "SUCCESS" %}
+                            <span class="status-chip s-success">SUCCESS</span>
+                            {% elif b[8] == "COMPLETED" %}
+                            <span class="status-chip s-completed">COMPLETED</span>
+                            {% elif b[8] == "REVIEWED" %}
+                            <span class="status-chip s-reviewed">REVIEWED</span>
+                            {% elif b[8] == "CLOSED" %}
+                            <span class="status-chip s-closed">CLOSED</span>
+                            {% else %}
+                            <span class="status-chip s-failed">{{ b[8] }}</span>
+                            {% endif %}
+                        </td>
+                        <td style="min-width:260px;">
+                            <form method="POST" action="/partner/update-booking/{{ b[0] }}">
+                                <select name="status">
+                                    <option value="CREATED" {% if b[8] == 'CREATED' %}selected{% endif %}>CREATED</option>
+                                    <option value="ASSIGNED" {% if b[8] == 'ASSIGNED' %}selected{% endif %}>ASSIGNED</option>
+                                    <option value="IN_PROGRESS" {% if b[8] == 'IN_PROGRESS' %}selected{% endif %}>IN_PROGRESS</option>
+                                    <option value="SUCCESS" {% if b[8] == 'SUCCESS' %}selected{% endif %}>SUCCESS</option>
+                                    <option value="COMPLETED" {% if b[8] == 'COMPLETED' %}selected{% endif %}>COMPLETED</option>
+                                    <option value="REVIEWED" {% if b[8] == 'REVIEWED' %}selected{% endif %}>REVIEWED</option>
+                                    <option value="CLOSED" {% if b[8] == 'CLOSED' %}selected{% endif %}>CLOSED</option>
+                                    <option value="FAILED" {% if b[8] == 'FAILED' %}selected{% endif %}>FAILED</option>
+                                </select>
+                                <input type="date" name="service_date" value="{{ b[10] if b[10] else '' }}" style="margin-top:8px;">
+                                <input type="text" name="service_time" placeholder="e.g. 03:00 PM" value="{{ b[11] if b[11] else '' }}" style="margin-top:8px;">
+                                <button class="btn btn-green" type="submit" style="margin-top:8px;">Save Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
