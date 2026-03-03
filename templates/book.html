@@ -185,6 +185,7 @@
 <script>
   const subServiceContainer = document.getElementById('subServiceContainer');
   const subServiceSelect = document.getElementById('subService');
+  const BOOKING_AMOUNT_PAISE = 149900;
 
   const subServices = {
     "Agricultural Drone Spray": ["Crop Monitoring", "Fertilization", "Seeding", "Soil Analysis"],
@@ -210,42 +211,91 @@
     }
   }
 
-  function handleRazorpayBooking() {
-    const name = document.getElementById('firstname').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const date = document.getElementById('serviceDate').value;
-    const service = document.getElementById('service').value;
-    const subService = document.getElementById('subService').value;
+  async function handleRazorpayBooking() {
+    const name = document.getElementById("firstname").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const date = document.getElementById("serviceDate").value;
+    const service = document.getElementById("service").value;
+    const subService = document.getElementById("subService").value;
 
     if (!name || !phone || !email || !date || !service || !subService) {
       alert("Please fill out the form completely.");
       return;
     }
 
-    const options = {
-      "key": "rzp_test_7PoxAkSLJuNev9", // 🔁 Replace with your Razorpay key
-      "amount": 149900, // ₹1499 in paise
-      "currency": "INR",
-      "name": "AeroViaX",
-      "description": "Drone Service Booking",
-      "image": "logo.png",
-      "handler": function (response) {
-        alert("Payment Successful! Booking Confirmed.");
+    let orderData;
+    try {
+      const createOrderResponse = await fetch("/.netlify/functions/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          amount: BOOKING_AMOUNT_PAISE,
+          currency: "INR",
+          notes: {
+            customer_name: name,
+            customer_phone: phone,
+            customer_email: email,
+            service,
+            sub_service: subService,
+            service_date: date
+          }
+        })
+      });
 
-        const msg = `Hi AeroViaX! I have booked a drone service.%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0ADate: ${date}%0AService: ${service}%0ASub-Service: ${subService}%0APayment ID: ${response.razorpay_payment_id}`;
-        window.open(`https://wa.me/917032882407?text=${msg}`, "_blank");
+      orderData = await createOrderResponse.json();
+      if (!createOrderResponse.ok || !orderData.id) {
+        throw new Error(orderData.error || "Failed to create payment order.");
+      }
+    } catch (error) {
+      alert("Payment initialization failed. Please try again.");
+      return;
+    }
+
+    const options = {
+      key: orderData.keyId,
+      amount: orderData.amount,
+      currency: "INR",
+      order_id: orderData.id,
+      name: "AeroViaX",
+      description: "Drone Service Booking",
+      image: "logo.png",
+      handler: async function (response) {
+        try {
+          const verifyResponse = await fetch("/.netlify/functions/verify-payment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(response)
+          });
+
+          const verifyData = await verifyResponse.json();
+          if (!verifyResponse.ok || !verifyData.verified) {
+            throw new Error("Payment verification failed.");
+          }
+
+          alert("Payment Successful! Booking Confirmed.");
+          const msg = encodeURIComponent(
+            `Hi AeroViaX! I have booked a drone service.\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nDate: ${date}\nService: ${service}\nSub-Service: ${subService}\nOrder ID: ${response.razorpay_order_id}\nPayment ID: ${response.razorpay_payment_id}`
+          );
+          window.open(`https://wa.me/917032882407?text=${msg}`, "_blank");
+        } catch (error) {
+          alert("Payment captured, but verification failed. Please contact support with your Payment ID.");
+        }
       },
-      "prefill": {
-        "name": name,
-        "email": email,
-        "contact": phone
+      prefill: {
+        name: name,
+        email: email,
+        contact: phone
       },
-      "theme": {
-        "color": "#3399cc"
+      theme: {
+        color: "#3399cc"
       },
-      "modal": {
-        "ondismiss": function () {
+      modal: {
+        ondismiss: function () {
           alert("Payment Cancelled or Failed.");
         }
       }
